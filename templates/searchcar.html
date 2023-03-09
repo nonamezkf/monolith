@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{appType}} | Car Project</title>
+
+  <meta name="description" content="Example Monolith">
+  <meta name="author" content="@hepidad">
+
+  <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <nav>
+        <div class="col-md-12">
+          <h1>Monolith | Car Project</h1>
+          <h3>Demo:
+            <a href="{{url_for('createcar')}}">Create</a>
+            /
+            <a href="{{url_for('readcar')}}">Read</a>
+            /
+            <a href="{{url_for('deletecar')}}">Delete</a>
+            /
+            <a href="{{url_for('searchcar')}}">Search</a>
+          </h3>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <form action="{{url_for('searchCarSave')}}" method="POST">
+        <div class="row">
+          <h4>Search Car Data </h4>
+          <input type="text" class="form-control col-8" id="formSearchInput" name="formSearchInput">
+          <button id="submit" >Search</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+          <h4>View Car Data</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Model</th>
+                <th scope="col">Price (USD)</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for data in car_search %}  
+              <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.carname}}</td>   
+                <td>{{data.carbrand}}</td>
+                <td>{{data.carmodel}}</td>
+                <td>{{data.carprice}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+      </div>
+  </div>
+
+  </div>
+  <script src="../static/js/bootstrap.min.js"></script>
+</body>
+
+</html>

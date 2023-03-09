@@ -1,0 +1,45 @@
+{% include 'header.html' %}
+<body>
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{appType}} | Car Project</h1>
+            <h3>Demo:
+                <a href="{{url_for('createcar')}}">Create</a>
+                /
+                <a href="{{url_for('readcar')}}">Read</a>
+                /
+                <a href="{{url_for('deletecar')}}">Delete</a>
+                /
+                <a href="{{url_for('searchcar')}}">Search</a>
+            </h3> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Update Car Data</h4>
+            <form method="POST" action='{{url_for("updatecar", id=rows.id)}}'>
+                <div class='form-group'>
+                    <label>Name</label>
+                    <input type='text' name='carName' required class='form-control' value='{{rows.carname}}'>
+                </div>
+                <div class='form-group'>
+                    <label>Brand</label>
+                    <input type='text' name='carBrand' required class='form-control' value='{{rows.carbrand}}'>
+                </div>
+                <div class='form-group'>
+                    <label>Model</label>
+                    <input type='text' name='carModel' required class='form-control' value='{{rows.carmodel}}'>
+                </div>
+                <div class='form-group'>
+                    <label>Price</label>
+                    <input type='text' name='carPrice' required class='form-control' value='{{rows.carprice}}'>
+                </div>
+                <input type='submit' value='Submit' class='btn btn-primary'>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+{% include 'footer.html' %}
